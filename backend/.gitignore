@@ -1,0 +1,19 @@
+# Ignore environment variables
+.env
+
+# Ignore node modules
+node_modules/
+
+# Ignore build files (if applicable)
+dist/
+.vite/
+.vitepress/
+
+# Ignore logs & system files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore VS Code settings (optional)
+.vscode/
