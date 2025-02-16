@@ -7,6 +7,7 @@ import CreateFilm from "./pages/CreateFilm";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NavBar from "./components/NavBar"; // ✅ Import NavBar
+import "./styles/index.css";
 
 const App = () => {
     return (
