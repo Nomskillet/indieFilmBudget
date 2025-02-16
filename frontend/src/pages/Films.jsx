@@ -19,6 +19,9 @@ const Films = () => {
       }
     };
 
+
+    
+
     fetchFilms();
   }, []);
 
