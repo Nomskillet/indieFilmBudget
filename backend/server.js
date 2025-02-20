@@ -1,10 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
-const pool = require('./db');
-const authRoutes = require('./routes/authRoutes'); // Import auth routes
-const filmRoutes = require('./routes/filmsRoutes'); // ✅ Import film routes
-const authenticateToken = require('./middleware/authMiddleware'); // Import middleware
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
+const pool = require("./db");
+const authRoutes = require("./routes/authRoutes"); // Import auth routes
+const filmRoutes = require("./routes/filmsRoutes"); // ✅ Import film routes
+const authenticateToken = require("./middleware/authMiddleware"); // Import middleware
 
 const app = express();
 
@@ -13,16 +13,20 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/auth', authRoutes); // Mount auth routes
-app.use('/api/films', filmRoutes); // ✅ Use film routes
+app.use("/api/auth", authRoutes); // Mount auth routes
+app.use("/api/films", filmRoutes); // ✅ Use film routes
 
 // 🔒 Protected Route Example
-app.get('/api/protected', authenticateToken, (req, res) => {
-    res.json({ success: true, message: `Welcome, user ${req.user.userId}!` });
+app.get("/api/protected", authenticateToken, (req, res) => {
+  res.json({ success: true, message: `Welcome, user ${req.user.userId}!` });
 });
+
+const jsonErrorHandler = (err, req, res, next) => {
+  res.status(500).send({ error: err });
+};
 
 // Start Server
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
